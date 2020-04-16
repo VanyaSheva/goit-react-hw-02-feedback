@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import FeedbackOptions from "../FeedbackOptions/FeedbackOptions";
 import Statistics from "../Statistics/Statistics";
 import Section from "../Section/Section";
@@ -39,6 +39,7 @@ export default class Main extends Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
     return (
       <div>
         <Section title="Please leave feedback">
@@ -52,19 +53,17 @@ export default class Main extends Component {
           <Notification message="No feedback given"></Notification>
         )}
         {this.countTotalFeedback() > 0 && (
-          <Fragment>
-            <Section title="Statistics">
-              <Statistics
-                good={this.state.good}
-                neutral={this.state.neutral}
-                bad={this.state.bad}
-                countPositiveFeedbackPercentage={
-                  this.countPositiveFeedbackPercentage
-                }
-                countTotalFeedback={this.countTotalFeedback}
-              />
-            </Section>
-          </Fragment>
+          <Section title="Statistics">
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              countPositiveFeedbackPercentage={
+                this.countPositiveFeedbackPercentage
+              }
+              countTotalFeedback={this.countTotalFeedback}
+            />
+          </Section>
         )}
       </div>
     );

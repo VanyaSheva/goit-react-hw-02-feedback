@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import PropTypes from "prop-types";
 
 const Statistics = ({
   good,
@@ -20,5 +21,17 @@ const Statistics = ({
     )}
   </Fragment>
 );
+Statistics.defaultProps = {
+  good: 0,
+  neutral: 0,
+  bad: 0,
+};
 
+Statistics.propTypes = {
+  good: PropTypes.number,
+  neutral: PropTypes.number,
+  bad: PropTypes.number,
+  countPositiveFeedbackPercentage: PropTypes.func.isRequired,
+  countTotalFeedback: PropTypes.func.isRequired,
+};
 export default Statistics;
